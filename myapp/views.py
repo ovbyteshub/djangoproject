@@ -6,18 +6,24 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 
 def index(request):
-    return render(request, "index.html")
+    title = "My Application Index!!"
+    return render(request, "index.html", {
+        "title": title})
 
 def hello(request, username):
     print(f"Username received: {username}")
     return HttpResponse("<h2>Hello %s</h2>" % username)
 
 def about(request):
-    return render(request, "about.html")
+    username = "Ovlzqz"
+    return render(request, "about.html", {
+        "username": username})
 
 def projects(request):
     #projects = list(Project.objects.values())
-    return render(request, "projects.html")
+    projects = Project.objects.values()
+    return render(request, "projects.html", {
+        "projects": projects})
 
 def tasks(request):
     #task = Task.objects.get(id=id)
