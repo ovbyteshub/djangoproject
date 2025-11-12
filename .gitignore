@@ -13,6 +13,12 @@ db.sqlite3
 /staticfiles/
 /media/
 
+# Others DBs
+*.sqlite3
+*.db
+*.sqlite
+
+
 # Virtual environments
 env/
 venv/
