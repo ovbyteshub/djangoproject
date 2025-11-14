@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Project, Task
 from django.shortcuts import get_object_or_404
-from .forms import TaskForm
+from .forms import TaskForm, ProjectForm
 
 # Create your views here.
 
@@ -51,3 +51,17 @@ def create_task(request):
     return render(request, "tasks/create_task.html", {
         "form": form
     })
+
+def create_project(request):
+    print(request.method)
+    if request.method == "POST":
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data["name"]
+            Project.objects.create(name=name)
+            return redirect("/projects")
+    else:
+        form = ProjectForm()
+    return render(request, "projects/create_project.html", {
+        "form": form
+    })  
