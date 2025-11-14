@@ -45,7 +45,7 @@ def create_task(request):
             description = form.cleaned_data["description"]
             projectkey = 2  # Default project key for simplicity
             Task.objects.create(title=title, description=description, project_id=projectkey)
-            return redirect("/tasks")
+            return redirect("tasks")
     else:
         form = TaskForm()
     return render(request, "tasks/create_task.html", {
@@ -59,7 +59,7 @@ def create_project(request):
         if form.is_valid():
             name = form.cleaned_data["name"]
             Project.objects.create(name=name)
-            return redirect("/projects")
+            return redirect("projects")
     else:
         form = ProjectForm()
     return render(request, "projects/create_project.html", {
