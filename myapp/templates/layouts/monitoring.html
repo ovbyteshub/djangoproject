@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'styles/main.css' %}">
 </head>
 <body>
-    <nav>
+    <nav class="navbar container">
     <ul>
         <li><a href="/">Metrics</a></li>
         <li><a href="/">Logs</a></li>
@@ -18,11 +18,14 @@
 </body>
 </html>
 
-<h1>Monitoring Dashboard</h1>
 
-{% block content %}
 
-{% endblock %}
+<main class="container">
+    <h1>Monitoring Dashboard</h1>
+    {% block content %}
+    {% endblock %}
 
-<br>
-<a>Todos los derechos reservados OV ©</a>
+    <br>
+    <a>Todos los derechos reservados OV ©</a>
+</main>
+

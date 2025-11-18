@@ -65,3 +65,14 @@ def create_project(request):
     return render(request, "projects/create_project.html", {
         "form": form
     })  
+    
+    
+def project_details(request, id):
+    #print(id)
+    project = get_object_or_404(Project, id=id)
+    tasks = Task.objects.filter(project_id=id)
+    print(project)
+    return render(request, "projects/project_details.html", {
+        "project": project,
+        "tasks": tasks
+    })
